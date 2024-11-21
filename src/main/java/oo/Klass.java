@@ -3,6 +3,7 @@ package oo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Klass {
 
@@ -26,7 +27,7 @@ public class Klass {
         return Objects.hashCode(number);
     }
 
-    public int getClassNumber(){
+    public int getClassNumber() {
         return number;
     }
 
@@ -35,7 +36,7 @@ public class Klass {
     }
 
     public void assignLeader(Student leaderStudent) {
-        if(!leaderStudent.isIn(this)) {
+        if (!leaderStudent.isIn(this)) {
             System.out.println("It is not one of us.");
             return;
         }
@@ -48,11 +49,10 @@ public class Klass {
     }
 
     private void notifyMembers(int classNumber, String leaderName) {
-        members.forEach(member ->{
-            String notification = member.getNotification(classNumber, leaderName);
-            System.out.println(notification);
-        });
+        String notifications = members.stream()
+                .map(member -> member.getNotification(classNumber, leaderName))
+                .collect(Collectors.joining("\n"));
+        System.out.println(notifications);
     }
-
-
 }
+
