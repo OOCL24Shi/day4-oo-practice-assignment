@@ -9,8 +9,14 @@ public class Student extends Person {
         super(id,name,age, STUDENT_ROLE);
     }
 
-    public String introduce(){
-        return super.introduce() + " I am a "+ STUDENT_ROLE + "." + (klass == null?"":" I am in class "+klass.getClassNumber() + ".");
+    public String introduce() {
+        if (klass == null) {
+            return super.introduce() + " I am a " + STUDENT_ROLE + ".";
+        }
+        String classIntroduce = klass.isLeader(this) ?
+                String.format("I am the leader of class %d.", klass.getClassNumber()) :
+                String.format("I am in class %d.", klass.getClassNumber());
+        return super.introduce() + " I am a student. " + classIntroduce;
     }
 
     public void join(Klass klassToJoin){
