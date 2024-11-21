@@ -11,12 +11,6 @@ public class School {
         members.add(newMemberInClass);
     }
 
-    //    public void startSchool() {
-//        members.forEach(member -> {
-//            String notification = member.introduce();
-//            System.out.println(notification);
-//        });
-//    }
     public void startSchool() {
         String introductions = members.stream()
                 .map(Person::introduce)
