@@ -1,11 +1,14 @@
 package oo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Klass {
 
     public int number;
     private Student leader;
+    private List<Person> members = new ArrayList<>();
 
     public Klass(int number) {
         this.number = number;
@@ -37,6 +40,18 @@ public class Klass {
             return;
         }
         this.leader = leaderStudent;
+        notifyMembers(this.number, leaderStudent.name);
+    }
+
+    public void attach(Person person) {
+        members.add(person);
+    }
+
+    private void notifyMembers(int classNumber, String leaderName) {
+        members.forEach(member ->{
+            String notification = member.getNotification(classNumber, leaderName);
+            System.out.println(notification);
+        });
     }
 
 

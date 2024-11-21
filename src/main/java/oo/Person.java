@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Person {
 
-    private final int id;
-    private final String name;
-    private final int age;
-    private final String role;
+    protected final int id;
+    protected final String name;
+    protected final int age;
+    protected final String role;
 
     public Person(int id, String name, int age) {
         this.id = id;
@@ -37,5 +37,9 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    public String getNotification(int classNumber, String leaderName) {
+        return String.format("I am %s, %s of Class %s. I know %s become Leader.", name, role, classNumber, leaderName);
     }
 }
