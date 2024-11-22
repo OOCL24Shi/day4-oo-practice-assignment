@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 public class School {
     private List<Person> members = new ArrayList<>();
 
-    public void attach(Person newMemberInClass) {
-        members.add(newMemberInClass);
+    public void attach(Person newMemberInSchool) {
+        members.add(newMemberInSchool);
     }
 
     public void startSchool() {
